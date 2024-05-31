@@ -18,21 +18,23 @@ public class Biodata {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
-    @Column(name = "first_name")
+    @Column(name = "first_name", length = 20, nullable = false)
     private String firstName;
-    @Column(name = "last_name")
+    @Column(name = "last_name", length = 30, nullable = false)
     private String lastName;
-    @Column(name = "dob")
+    @Column(name = "dob",length = 10, nullable = false)
     private String dob;
-    @Column(name = "pob")
+    @Column(name = "pob", length = 50, nullable = false)
     private String pob;
-    @Column(name = "address")
+    @Column(name = "address", length = 255, nullable = false)
     private String address;
     @Column(name = "marital_status")
     private boolean maritalStatus;
 
     
     
+    @Column(name="deleted")
+    private boolean deleted;
     @Column(name = "create_by")
     private int createBy;
     @Column(name = "create_date")
@@ -43,6 +45,12 @@ public class Biodata {
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
+    public boolean isDeleted() {
+        return deleted;
+    }
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
     public boolean isMaritalStatus() {
         return maritalStatus;
     }

@@ -22,9 +22,9 @@ public class Employee {
     private long id;
     @Column(name = "biodata_id")
     private long biodataId;
-    @Column(name = "nip")
+    @Column(name = "nip", length = 5, nullable = false)
     private String nip;
-    @Column(name = "status")
+    @Column(name = "status", length = 10, nullable = false)
     private String status;
     @Column(name = "salary")
     private int salary;
@@ -33,7 +33,8 @@ public class Employee {
     @JoinColumn(name="biodata_id", insertable=false, updatable=false)
     private Biodata biodata;
 
-    
+    @Column(name="deleted")
+    private boolean deleted;
     @Column(name = "create_by")
     private int createBy;
     @Column(name = "create_date")
@@ -44,6 +45,12 @@ public class Employee {
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
+    public boolean isDeleted() {
+        return deleted;
+    }
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
     public long getId() {
         return id;
     }
